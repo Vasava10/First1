@@ -806,7 +806,7 @@ class Miner(SimpleJsonRpcClient):
     '''Begins the miner. This method does not return.'''
 
     # Figure out the hostname and port
-    url = urlparse.urlparse(self.url)
+    url = urlparse(self.url)
     hostname = url.hostname or ''
     port = url.port or 9333
 
