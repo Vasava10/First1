@@ -617,7 +617,7 @@ class SimpleJsonRpcClient(object):
       # Parse the JSON
       try:
         reply = json.loads(line)
-      except Exception, str(e):
+      except Exception as e:
         log("JSON-RPC Error: Failed to parse JSON %r (skipping)" % line, LEVEL_ERROR)
         continue
 
@@ -904,7 +904,7 @@ if __name__ == '__main__':
     else:
       try:
         (username, password) = options.userpass.split(':')
-      except Exception, e:
+      except Exception as e:
         message = 'Could not parse username:password for -O/--userpass'
 
   # Was there an issue? Show the help screen and exit.
