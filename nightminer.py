@@ -320,20 +320,6 @@ def set_scrypt_library(library = SCRYPT_LIBRARY_AUTO):
     scrypt_proof_of_work = lambda header: NativeScrypt.hash(header, header, 1024, 1, 1, 32)
     SCRYPT_LIBRARY = library
 
-  # Try to load a faster version of scrypt before using the pure-Python implementation
-  elif library == SCRYPT_LIBRARY_AUTO:
-    try:
-      set_scrypt_library(SCRYPT_LIBRARY_LTC)
-    except Exception, e:
-      try:
-        set_scrypt_library(SCRYPT_LIBRARY_SCRYPT)
-      except Exception, e:
-        set_scrypt_library(SCRYPT_LIBRARY_PYTHON)
-
-  else:
-    scrypt_proof_of_work = lambda header: scrypt(header, header, 1024, 1, 1, 32)
-    SCRYPT_LIBRARY = library
-
 set_scrypt_library()
 
 
