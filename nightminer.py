@@ -911,7 +911,7 @@ if __name__ == '__main__':
   if message:
     parser.print_help()
     print
-    print message
+    print (message)
     sys.exit(1)
 
   # Set the logging level
