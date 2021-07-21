@@ -627,7 +627,7 @@ class SimpleJsonRpcClient(object):
           if 'id' in reply and reply['id'] in self._requests:
             request = self._requests[reply['id']]
           self.handle_reply(request = request, reply = reply)
-      except self.RequestReplyWarning, e:
+      except self.RequestReplyWarning as e:
         output = e.message
         if e.request:
           output += '\n  ' + e.request
@@ -793,7 +793,7 @@ class Miner(SimpleJsonRpcClient):
           self.send(method = 'mining.submit', params = params)
           log("Found share: " + str(params), LEVEL_INFO)
         log("Hashrate: %s" % human_readable_hashrate(job.hashrate), LEVEL_INFO)
-      except Exception, e:
+      except Exception as e:
         log("ERROR: %s" % e, LEVEL_ERROR)
 
     thread = threading.Thread(target = run, args = (self._job, ))
