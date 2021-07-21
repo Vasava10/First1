@@ -617,7 +617,7 @@ class SimpleJsonRpcClient(object):
       # Parse the JSON
       try:
         reply = json.loads(line)
-      except Exception, e:
+      except Exception, str(e):
         log("JSON-RPC Error: Failed to parse JSON %r (skipping)" % line, LEVEL_ERROR)
         continue
 
